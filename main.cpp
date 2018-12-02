@@ -6,6 +6,8 @@
 #include <fstream>
 #include <string>
 #include "plagiarismCatcher.h"
+#include <string.h>
+#include <stdio.h>
 
 using namespace std;
 
@@ -35,5 +37,18 @@ int main()
         }
 
     }
+
+    FILE *fptr;
+    vector <char>  eqn;
+    strcpy(eqn, files[2]);
+    fptr = fopen(eqn, "r");
+
+    if (fptr == NULL) {  //if nothing in file deosn't work
+        printf("Nothing has opened!\n");
+        exit(-1);
+    } else {        //if file has pointer in it then it works
+        printf("file open\n");
+    }
+
     return 0;
 }
