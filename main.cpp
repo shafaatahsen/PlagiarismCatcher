@@ -8,6 +8,8 @@
 #include "plagiarismCatcher.h"
 #include <string.h>
 #include <stdio.h>
+#include <deque>
+#include <sstream>
 
 using namespace std;
 
@@ -26,29 +28,43 @@ int main()
         string fPath = dir + "/" + files[i];
 
         ifstream myFile (fPath.c_str());
+        deque<string> cue;
 
         if (myFile.is_open())
         {
             while ( getline (myFile,line) )
             {
-                cout << line << '\n';
+                istringstream iss(line);
+                string word;
+                while(iss >> word){
+                    if(cue.size() == 6){
+                        for(deque<string>::iterator iter = cue.begin(); iter != cue.end(); iter++){
+                            cout<<*iter;
+                        }
+                        cout<<endl;
+                        cue.pop_front();
+                    }
+                    cue.push_back(word);
+                }
+
+
+                /*int j = 0;
+                while(line[j] != NULL){
+                    if(cue.size() == 6){
+                        for(deque<string>::iterator iter = cue.begin(); iter != cue.end(); iter++){
+                            cout<<*iter;
+                        }
+                        cout<<endl;
+                        cue.pop_front();
+                    }
+
+                }*/
             }
             myFile.close();
         }
 
     }
 
-    FILE *fptr;
-    vector <char>  eqn;
-    strcpy(eqn, files[2]);
-    fptr = fopen(eqn, "r");
-
-    if (fptr == NULL) {  //if nothing in file deosn't work
-        printf("Nothing has opened!\n");
-        exit(-1);
-    } else {        //if file has pointer in it then it works
-        printf("file open\n");
-    }
 
     return 0;
 }
