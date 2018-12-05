@@ -25,29 +25,15 @@ int main()
         cout << i << files[i] << endl;
         string fPath = dir + "/" + files[i];
 
-        ifstream myFile (fPath.c_str());
+        ifstream myFile(fPath.c_str());
 
-        if (myFile.is_open())
-        {
-            while ( getline (myFile,line) )
-            {
+        if (myFile.is_open()) {
+            while (getline(myFile, line)) {
                 cout << line << '\n';
             }
             myFile.close();
         }
 
-    }
-
-    FILE *fptr;
-    vector <char>  eqn;
-    strcpy(eqn, files[2]);
-    fptr = fopen(eqn, "r");
-
-    if (fptr == NULL) {  //if nothing in file deosn't work
-        printf("Nothing has opened!\n");
-        exit(-1);
-    } else {        //if file has pointer in it then it works
-        printf("file open\n");
     }
 
     return 0;
