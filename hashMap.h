@@ -33,7 +33,7 @@ public:
 
 class HashMap{
 private:
-    const int tableSize = 1000007;
+    const unsigned long tableSize = 1000007;
     HashNode* table[];
 
 public:
@@ -42,6 +42,11 @@ public:
             table[i] = NULL;
         }
     }
-   int hashFunc(deque<string> k);
+
+    unsigned long hashFunc(deque<string> k);
+
+    unsigned long getTableSize(){
+        return tableSize;
+    }
 
 };
