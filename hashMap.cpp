@@ -1,7 +1,10 @@
 #include "hashMap.h"
 #include <cmath>
+#include <vector>
 
-int HashMap::hashFunc(vector<char> k) {
+using namespace std;
+
+int HashMap::hashFunc(deque<string> k) {
 
     int hash = 0;
     for(int i = 0; i < k.size(); i++){  //uses method 3 from slides

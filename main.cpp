@@ -15,9 +15,11 @@ using namespace std;
 
 
 
-int main()
+int main(int argc, char* argv[])
 {
-    string dir = string("sm_doc_set");
+
+    string dir = string(argv[1]);
+    int k = atoi(argv[2]);
     string line;
     vector<string> files = vector<string>();
 

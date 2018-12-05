@@ -3,7 +3,7 @@
 #endif //PLAGIARISMCATCHER_HASHMAP_H
 
 #include<iostream>
-#include <vector>
+#include <deque>
 
 using namespace std;
 
