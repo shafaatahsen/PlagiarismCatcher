@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <deque>
 #include <sstream>
+#include "hashMap.h"
 
 using namespace std;
 
@@ -24,8 +25,9 @@ int main(int argc, char* argv[])
     vector<string> files = vector<string>();
 
     getdir(dir,files);
+    HashMap h;  //need this to use hashFunc
 
-    for (unsigned int i = 0;i < files.size();i++) {
+    for (unsigned int i = 2;i < files.size();i++) {
         cout << i << files[i] << endl;
         string fPath = dir + "/" + files[i];
 
@@ -43,7 +45,9 @@ int main(int argc, char* argv[])
                         for(deque<string>::iterator iter = cue.begin(); iter != cue.end(); iter++){
                             cout<<*iter;
                         }
+                        unsigned long hashedValue = h.hashFunc(cue);
                         cout<<endl;
+                        cout << hashedValue << endl;
                         cue.pop_front();
                     }
                     cue.push_back(word);
