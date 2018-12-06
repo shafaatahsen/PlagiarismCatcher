@@ -16,6 +16,11 @@ public:
         value = v;
         next = NULL;
     }
+    HashNode(){
+        value = NULL;
+        next = NULL;
+    }
+
 
     unsigned int getValue(){
         return  value;
@@ -34,10 +39,10 @@ public:
 class HashMap{
 private:
     const unsigned long tableSize = 1000007;
-    HashNode* table[];
+    HashNode *table[1000007];
 
 public:
-    void makeTable(){
+    HashMap(){
         for(int i = 0; i < tableSize; i++){
             table[i] = NULL;
         }
@@ -48,5 +53,7 @@ public:
     unsigned long getTableSize(){
         return tableSize;
     }
+
+    int insertNode(int idx, int val);
 
 };

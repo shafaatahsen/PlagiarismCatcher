@@ -20,6 +20,23 @@ unsigned long HashMap::hashFunc(deque<string> k) {
     return hash % tableSize;
 }
 
+int HashMap::insertNode(int idx, int val){
+    if(table[idx] == NULL){
+        HashNode *temp = new HashNode(val);
+        table[idx] = temp;
+        return 0;
+    }
+
+    HashNode *iter = table[idx];
+    while(iter->getNext() != NULL){
+        iter = iter->getNext();
+    }
+
+    HashNode *temp = new HashNode(val);
+    iter->setNext(temp);
+    return 0;
+}
+
 int getMod(int base, int p, unsigned long size){
     if(p == 0){
         return 1;

@@ -45,9 +45,10 @@ int main(int argc, char* argv[])
                         for(deque<string>::iterator iter = cue.begin(); iter != cue.end(); iter++){
                             cout<<*iter;
                         }
-                        unsigned long hashedValue = h.hashFunc(cue);
+                        unsigned long hashedIdx = h.hashFunc(cue);
+                        h.insertNode(hashedIdx,i); //key: 6 word, value: file number
                         cout<<endl;
-                        cout << hashedValue << endl;
+                        cout << hashedIdx << endl;
                         cue.pop_front();
                     }
                     cue.push_back(word);
