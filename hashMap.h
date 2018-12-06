@@ -39,9 +39,11 @@ public:
 class HashMap{
 private:
     const unsigned long tableSize = 231643;
-    HashNode *table[231643];
+
 
 public:
+    HashNode *table[231643];
+
     HashMap(){
         for(int i = 0; i < tableSize; i++){
             table[i] = NULL;
@@ -55,5 +57,7 @@ public:
     }
 
     int insertNode(int idx, int val);
+
+    void populateTable(int *table[]);
 
 };

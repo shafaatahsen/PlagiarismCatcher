@@ -42,19 +42,17 @@ int main(int argc, char* argv[])
                 string word;
                 while(iss >> word){
                     if(cue.size() == 6){
-                        for(deque<string>::iterator iter = cue.begin(); iter != cue.end(); iter++){
+                        /*for(deque<string>::iterator iter = cue.begin(); iter != cue.end(); iter++){
                             cout<<*iter;
-                        }
+                        }*/
                         unsigned long hashedIdx = h.hashFunc(cue);
                         h.insertNode(hashedIdx,i); //key: 6 word, value: file number
-                        cout<<endl;
-                        cout << hashedIdx << endl;
+                        //cout<<endl;
+                        //cout << hashedIdx << endl;
                         cue.pop_front();
                     }
                     cue.push_back(word);
                 }
-
-
                 /*int j = 0;
                 while(line[j] != NULL){
                     if(cue.size() == 6){
@@ -70,6 +68,42 @@ int main(int argc, char* argv[])
             myFile.close();
         }
 
+
+
+    }
+
+    int table[files.size()][files.size()] ={0};
+
+
+    for(int i = 0; i<h.getTableSize();i++){
+        if(h.table[i]==NULL){
+            continue;
+        }
+        HashNode *temp = h.table[i];
+        HashNode *temp2;
+        while(temp->getNext() != NULL){
+            temp2= temp->getNext();
+            if(temp->getValue()<temp2->getValue()){
+                table[temp->getValue()][temp2->getValue()]++;
+            }
+            else{
+                table[temp2->getValue()][temp->getValue()]++;
+            }
+            HashNode *used = temp;
+            temp = temp->getNext();
+            delete(used);
+        }
+        delete(temp);
+
+    }
+    for(int i = 0; i<files.size();i++ ){
+
+        for (int j = i+1; j < files.size(); j++) {
+            if(table[i][j]>0){
+                cout<<files[i]<<" and "<<files[j]<<" have "<<table[i][j]<<" collisions"<<endl;
+            }
+
+        }
     }
 
 
