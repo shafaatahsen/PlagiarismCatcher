@@ -21,6 +21,7 @@ int main(int argc, char* argv[])
 
     string dir = string(argv[1]);
     int k = atoi(argv[2]);
+    int collisions = atoi(argv[3]);
     string line;
     vector<string> files = vector<string>();
 
@@ -28,14 +29,16 @@ int main(int argc, char* argv[])
     HashMap h;  //need this to use hashFunc
 
     vector<string>::iterator iter;
-    cout<<files[0]<<endl;
-    cout<<files[1]<<endl;
+
     for(iter = files.begin(); iter != files.end();iter++){
         if((*iter == "..") || (*iter == "."))
             files.erase(iter);
     }
-    cout<<files[0]<<endl;
-    cout<<files[1]<<endl;
+    for(iter = files.begin(); iter != files.end();iter++){
+        if((*iter == "..") || (*iter == "."))
+            files.erase(iter);
+    }
+
 
     for (unsigned int i = 0;i < files.size();i++) {
         cout << i << files[i] << endl;
@@ -109,7 +112,7 @@ int main(int argc, char* argv[])
     for(int i = 0; i<files.size();i++ ){
 
         for (int j = i+1; j < files.size(); j++) {
-            if(table[i][j]>0){
+            if(table[i][j] >= collisions){
                 cout<<files[i]<<" and "<<files[j]<<" have "<<table[i][j]<<" collisions"<<endl;
             }
 
