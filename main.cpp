@@ -27,7 +27,17 @@ int main(int argc, char* argv[])
     getdir(dir,files);
     HashMap h;  //need this to use hashFunc
 
-    for (unsigned int i = 2;i < files.size();i++) {
+    vector<string>::iterator iter;
+    cout<<files[0]<<endl;
+    cout<<files[1]<<endl;
+    for(iter = files.begin(); iter != files.end();iter++){
+        if((*iter == "..") || (*iter == "."))
+            files.erase(iter);
+    }
+    cout<<files[0]<<endl;
+    cout<<files[1]<<endl;
+
+    for (unsigned int i = 0;i < files.size();i++) {
         cout << i << files[i] << endl;
         string fPath = dir + "/" + files[i];
 
