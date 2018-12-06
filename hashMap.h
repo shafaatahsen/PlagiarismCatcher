@@ -38,8 +38,8 @@ public:
 
 class HashMap{
 private:
-    const unsigned long tableSize = 1000007;
-    HashNode *table[900007];
+    const unsigned long tableSize = 231643;
+    HashNode *table[231643];
 
 public:
     HashMap(){
