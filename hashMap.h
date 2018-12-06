@@ -17,7 +17,7 @@ public:
         next = NULL;
     }
     HashNode(){
-        value = NULL;
+        value = -1;
         next = NULL;
     }
 
@@ -39,7 +39,7 @@ public:
 class HashMap{
 private:
     const unsigned long tableSize = 1000007;
-    HashNode *table[1000007];
+    HashNode *table[900007];
 
 public:
     HashMap(){
