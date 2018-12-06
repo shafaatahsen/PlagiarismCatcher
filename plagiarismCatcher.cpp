@@ -4,6 +4,7 @@
 
 #include <dirent.h>
 #include <iostream>
+#include <errno.h>
 #include "plagiarismCatcher.h"
 
 

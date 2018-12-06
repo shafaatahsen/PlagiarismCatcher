@@ -11,6 +11,7 @@
 #include <deque>
 #include <sstream>
 #include "hashMap.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -85,7 +86,12 @@ int main(int argc, char* argv[])
 
     }
 
-    int table[files.size()][files.size()] ={0};
+    int table[files.size()][files.size()];
+    for(int l= 0; l < files.size(); l++){
+	for(int m = 0; m < files.size(); m++){
+	    table[l][m] = 0;
+	}
+    }
 
 
     for(int i = 0; i<h.getTableSize();i++){

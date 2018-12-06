@@ -38,7 +38,7 @@ public:
 
 class HashMap{
 private:
-    const unsigned long tableSize = 231643;
+   static const unsigned long tableSize = 231643;
 
 
 public:
