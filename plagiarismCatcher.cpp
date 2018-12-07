@@ -2,10 +2,9 @@
 // Created by Zanel on 12/1/2018.
 //
 
-#include <dirent.h>
-#include <iostream>
-#include <errno.h>
+
 #include "plagiarismCatcher.h"
+
 
 
 using namespace std;
@@ -25,3 +24,4 @@ int getdir (string dir, vector<string> &files)
     closedir(dp);
     return 0;
 }
+

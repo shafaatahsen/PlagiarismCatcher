@@ -1,6 +1,11 @@
+/* HashMap Class
+ * Plagiarism Catcher by Felipe Palacios and Ahmad Ahsen
+ * EE312 Priebe
+ * */
+
 #ifndef PLAGIARISMCATCHER_HASHMAP_H
 #define PLAGIARISMCATCHER_HASHMAP_H
-#endif //PLAGIARISMCATCHER_HASHMAP_H
+
 
 #include<iostream>
 #include <deque>
@@ -21,13 +26,16 @@ public:
         next = NULL;
     }
 
-
+    //returns Hashnode value stored
     unsigned int getValue(){
         return  value;
     }
+
+
     void setValue(unsigned int v){
         value = v;
     }
+    //returns next HashNode value
     HashNode* getNext(){
         return next;
     }
@@ -50,14 +58,21 @@ public:
         }
     }
 
+    //Hashing function for string key
+    //input: string key
+    //rVal: index within hash table to store value
     unsigned long hashFunc(deque<string> k);
 
     unsigned long getTableSize(){
         return tableSize;
     }
 
+    //Stores HashNode within location in Hashtable specified
+    //input: value to be stored
+    //rVal: 0 upon success
     int insertNode(int idx, int val);
 
-    void populateTable(int *table[]);
 
 };
+
+#endif //PLAGIARISMCATCHER_HASHMAP_H

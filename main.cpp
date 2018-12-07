@@ -1,3 +1,8 @@
+/*
+ * Plagiarism Catcher by Felipe Palacios and Ahmad Ahsen
+ * EE312 Priebe
+ * main function*/
+
 #include <sys/types.h>
 #include <dirent.h>
 #include <errno.h>
@@ -56,28 +61,15 @@ int main(int argc, char* argv[])
                 string word;
                 while(iss >> word){
                     if(cue.size() == 6){
-                        /*for(deque<string>::iterator iter = cue.begin(); iter != cue.end(); iter++){
-                            cout<<*iter;
-                        }*/
+
                         unsigned long hashedIdx = h.hashFunc(cue);
                         h.insertNode(hashedIdx,i); //key: 6 word, value: file number
-                        //cout<<endl;
-                        //cout << hashedIdx << endl;
+
                         cue.pop_front();
                     }
                     cue.push_back(word);
                 }
-                /*int j = 0;
-                while(line[j] != NULL){
-                    if(cue.size() == 6){
-                        for(deque<string>::iterator iter = cue.begin(); iter != cue.end(); iter++){
-                            cout<<*iter;
-                        }
-                        cout<<endl;
-                        cue.pop_front();
-                    }
 
-                }*/
             }
             myFile.close();
         }
@@ -86,15 +78,19 @@ int main(int argc, char* argv[])
 
     }
 
+    //Initialize table for grid
     int table[files.size()][files.size()];
     for(int l= 0; l < files.size(); l++){
-	for(int m = 0; m < files.size(); m++){
-	    table[l][m] = 0;
-	}
+	    for(int m = 0; m < files.size(); m++){
+	        table[l][m] = 0;
+	    }
     }
 
 
+    //Loop through hash table and count how many collisions there are
+    //Pair Collisions
     for(int i = 0; i<h.getTableSize();i++){
+
         if(h.table[i]==NULL){
             continue;
         }
@@ -115,6 +111,8 @@ int main(int argc, char* argv[])
         delete(temp);
 
     }
+
+    //Loop through table of collisions and print if they are larger than the size specified by the user
     for(int i = 0; i<files.size();i++ ){
 
         for (int j = i+1; j < files.size(); j++) {

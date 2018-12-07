@@ -37,9 +37,7 @@ int HashMap::insertNode(int idx, int val){
     return 0;
 }
 
-void HashMap::populateTable(int *table[]){
 
-}
 
 int getMod(int base, int p, unsigned long size){
     if(p == 0){
